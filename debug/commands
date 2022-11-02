@@ -1,0 +1,8 @@
+python generator.py
+
+g++ -o P4 P4_seg.cpp
+Get-Content text | .\P4 > answer
+g++ -o test test.cpp
+Get-Content text | .\test > my_answer
+
+python check.py
