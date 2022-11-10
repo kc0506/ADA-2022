@@ -2,68 +2,22 @@
 
 using namespace std;
 
-struct node {
-    node *left, *right, *p;
-    int f;
-};
-
-struct cmp {
-    bool operator()(node *a, node *b){
-        return a->f > b->f;
-    }
-};
-
 int main(){
     ios_base::sync_with_stdio(0), cin.tie(0);
 
-    int N;
-    cin >> N;
+    string a, b;
+    cin >> a >> b;
 
-    int F[N];
-    for(auto &i: F) 
-        cin >> i;
-    
-    if(N == 1){
-        cout << '0';
-        return 0;
-    }
-
-    priority_queue<node*, vector<node*>, cmp> H;
-    node *nodes = new node[N];
-    for(int i=0; i<N; i++){
-        nodes[i].f = F[i];
-        nodes[i].p = nullptr;
-        H.push(&(nodes[i]));
-    }
-
-    for(int i=1; i<N; i++){
-        node *z = new node, *x, *y;
-        x = H.top(); 
-        H.pop();
-        y = H.top();
-        H.pop();
-
-        x->p = z;
-        y->p = z;
-        z->left = x;
-        z->right = y;
-        z->p = nullptr;
-        z->f = x->f + y->f;
-        H.emplace(z);
-    }
-
-    for(int i=0; i<N; i++){
-        node *cur = nodes + i;
-        string res = "";
-        while(cur->p){
-            if(cur == cur->p->left){
-                res = '0' + res;
-            } else{
-                res = '1' + res;
-            }
-            cur = cur->p;
-        }
-        cout << res << '\n';
-    }
-}
-
+    int dp[a.size() + 1][b.size() + 1] = {0};
+    for(int i=0; i<=a.size(); i++)
+        dp[i][0] = i;
+    for(int j=0; j<=b.size(); j++)
+        dp[0][j] = j;
+    for(int i=1; i<=a.size(); i++)
+        for(int j=1; j<=b.size(); j++)
+            if(a[i - 1] == b[j - 1])
+                dp[i][j] = dp[i - 1][j - 1];
+            else    
+                dp[i][j] = min(min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
+    cout << dp[a.size()][b.size()];
+}   
