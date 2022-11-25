@@ -6,6 +6,25 @@
         "random": "cpp",
         "deque": "cpp",
         "string": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp",
+        "*.tcc": "cpp",
+        "atomic": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "algorithm": "cpp",
+        "memory_resource": "cpp",
+        "memory": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp"
     }
 }
