@@ -53,7 +53,7 @@ int main(){
     ll dp[N + 1][K];  // dp[i][k] = 在 [i, N-1]，切成 k 段時能得到的最低 discomfort value
     // k <= N - i
     // dp[N][k] = 0
-
+   
     // Let M[l, r] = 最大連續子陣列和 in [l, r]
     // dp[i][k] =  min(M[i, j] * (j - i + 1) + dp[j + 1][k - 1])
     
